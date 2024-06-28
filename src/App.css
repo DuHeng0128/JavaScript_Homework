@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .menu, .single-player, .two-player, .skill-mode {
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
   }
-}
+  
+  nav ul li {
+    margin: 10px 0;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+  }
+  
+
+  .chess-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .back-to-menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black; 
+  }
+  
+  .chess-board {
+    position: relative;
+    width: 550px; 
+    height: 610px; 
+    background-image: url('./assets/chessboard.png');
+    background-size: cover;
+    margin-top: 50px; 
+    z-index: 1;
+  }
+  
+  .board-row {
+    display: flex;
+  }
+  
+  .board-cell {
+    width: 58px; 
+    height: 58px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none; 
+    position: absolute;
+    z-index: 3;
+  }
+  
+  .board-cell.selected {
+    background-color: rgba(255, 255, 0, 0.5); 
+  }
+  
+  .piece {
+    width: 50px; 
+    height: 50px;
+    z-index: 2;
+  }
+  
+  .piece img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .piece.red {
+    border: 2px solid red;
+  }
+  
+  .piece.black {
+    border: 2px solid black;
+  }
+  
