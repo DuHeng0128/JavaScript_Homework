@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
+import socket from './socket';
 const TwoPlayer = require('./TwoPlayer').default;
-const socket = io('http://localhost:5000');
 
 
 function RoomSelection() {
@@ -39,8 +38,9 @@ function RoomSelection() {
     });
 
     socket.on('gameStart', () => {
-      TwoPlayer(roomNumber);
-      navigate('/twoplayer');
+      //TwoPlayer(roomNumber);
+      console.log(roomNumber);
+      navigate('/twoplayer', { state: { roomNumber } });
     });
 
     return () => {

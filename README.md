@@ -1,3 +1,15 @@
+# 项目细节
+默认情况下，Node.js只支持CommonJS模块 (require/module.exports)，不支持ES6模块 (import/export)，相应代码已修复。
+
+本项目依赖npm、node运行，运行 npm install -g create-react-app  和 npm install react-router-dom 以安装React依赖。
+运行 npm install socket.io 和 npm install socket.io-client 以安装后端服务器依赖。
+
+服务器启动命令：node \server\server.js （默认端口5000）
+客户端启动命令：npm start （默认端口3000）
+新建其他端口客户端：npm start --port 3001  （多客户端可进行双人模式）
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

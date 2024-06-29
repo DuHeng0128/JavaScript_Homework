@@ -57,7 +57,6 @@ function ChessBoard({ board, onPieceMove, playerColor }) {
   }
 
   function animateMove(from, to) {
-    // 示例：
     const pieceElement = document.getElementById(`piece-${from.row}-${from.col}`);
     if (pieceElement) {
       pieceElement.classList.add('moving');

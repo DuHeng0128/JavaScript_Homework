@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import io from 'socket.io-client';
+import socket from './socket';
 const ChessBoard = require('./ChessBoard').default;
 const initializeBoard = require('./ChessBoard').initializeBoard;
 const movePiece = require('../utils/chessLogic').movePiece;
-
-const socket = io('http://localhost:5000'); // 确保此处与后端CORS配置一致
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function TwoPlayer(roomNumber) {
+function TwoPlayer() {
   const [board, setBoard] = useState(initializeBoard());
   const [playerColor, setPlayerColor] = useState(null);
+  const location = useLocation();
+  const { roomNumber } = location.state || {};
 
 
   const handlePieceMove = (from, to) => {
@@ -44,12 +44,7 @@ function TwoPlayer(roomNumber) {
       alert(message);
     };
 
-    socket.on('pieceMoved', ({ from, to }) => {
-      const newBoard = [...board];
-      newBoard[to.row][to.col] = newBoard[from.row][from.col];
-      newBoard[from.row][from.col] = null;
-      setBoard(newBoard);
-    });
+    socket.on('pieceMoved', handlePieceMoved);
     socket.on('invalidMove', handleInvalidMove);
 
     return () => {
